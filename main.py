@@ -7,7 +7,7 @@ def run_bash_script():
     def execute_script():
         try:
             process = subprocess.Popen(
-                ["/path/to/your/bash_script.sh"],
+                ["../init.sh"],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
                 text=True,
@@ -38,7 +38,7 @@ custom_font = ("Bahnschrift", 18)
 custom_title = Label(root, text="HomeCloud User Terminal", font=custom_font)
 custom_title.grid(row=0, column=0, columnspan=5, padx=20, pady=10)
 
-text_font = ("Bahnschrift", 10)
+text_font = ("Bahnschrift", 12)
 
 # Styling for welcome message
 welcome_message = """==============================================
