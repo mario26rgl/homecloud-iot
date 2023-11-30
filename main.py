@@ -10,7 +10,7 @@ root = tk.Tk()
 root.title("HomeCloud v0.1")
 
 # Set fixed window size
-root.geometry("800x400")
+root.geometry("855x400")
 root.resizable(False, False)  # Disable window resizing
 
 # Custom title label simulating a larger header
@@ -21,9 +21,9 @@ custom_title.grid(row=0, column=0, columnspan=5, padx=20, pady=10)
 text_font = ("Bahnschrift", 12)
 
 # Styling for welcome message
-welcome_message = """=============================================================================
+welcome_message = """==============================================
                                      HomeCloud - version 0.1 (ALPHA)
-=============================================================================\n"""
+==============================================\n"""
 terminal_output = tk.Text(root, height=16, width=60, font=text_font, bd=2, relief=tk.SOLID)
 terminal_output.grid(row=1, column=3, columnspan=2, padx=20, pady=(0, 20))
 
@@ -44,7 +44,7 @@ run_button = tk.Button(root, text="Install application", command=run_bash_script
 run_button.grid(row=1, column=1, columnspan=2, padx=20, pady=20)
 
 # Icon styling
-icon = PhotoImage(file="images\\icon.png")
+icon = PhotoImage(file="images/icon.png")
 root.iconphoto(True, icon)
 
 root.mainloop()
