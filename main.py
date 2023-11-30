@@ -1,10 +1,30 @@
 import tkinter as tk
 from tkinter import *
 import subprocess
+import threading
 
 def run_bash_script():
-    output = subprocess.check_output(["/path/to/your/bash_script.sh"], text=True, shell=True)
-    terminal_output.insert(tk.END, output)
+    def execute_script():
+        try:
+            process = subprocess.Popen(
+                ["/path/to/your/bash_script.sh"],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                shell=True
+            )
+            # Read output line by line and display in the GUI
+            for line in iter(process.stdout.readline, ''):
+                terminal_output.insert(tk.END, line)
+                terminal_output.see(tk.END)  # Scrolls to the end
+            process.stdout.close()
+            process.wait()
+        except subprocess.CalledProcessError as e:
+            terminal_output.insert(tk.END, f"Error: {e.output}\n")
+
+    # Run the script in a separate thread to prevent freezing the GUI
+    thread = threading.Thread(target=execute_script)
+    thread.start()
 
 root = tk.Tk()
 root.title("HomeCloud v0.1")
@@ -18,7 +38,7 @@ custom_font = ("Bahnschrift", 18)
 custom_title = Label(root, text="HomeCloud User Terminal", font=custom_font)
 custom_title.grid(row=0, column=0, columnspan=5, padx=20, pady=10)
 
-text_font = ("Bahnschrift", 12)
+text_font = ("Bahnschrift", 10)
 
 # Styling for welcome message
 welcome_message = """==============================================
