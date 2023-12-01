@@ -30,7 +30,7 @@ root = tk.Tk()
 root.title("HomeCloud v0.1")
 
 # Set fixed window size
-root.geometry("860x400")
+root.geometry("870x400")
 root.resizable(False, False)  # Disable window resizing
 
 # Custom title label simulating a larger header
