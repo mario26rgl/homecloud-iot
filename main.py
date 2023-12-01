@@ -30,7 +30,7 @@ root = tk.Tk()
 root.title("HomeCloud v0.1")
 
 # Set fixed window size
-root.geometry("855x400")
+root.geometry("860x400")
 root.resizable(False, False)  # Disable window resizing
 
 # Custom title label simulating a larger header
@@ -60,7 +60,7 @@ terminal_output.tag_config("gray", foreground="#333333")
 
 # Button styling
 button_style = {"font": text_font, "padx": 10, "pady": 5, "bd": 3, "relief": tk.RAISED, "bg": "white smoke", "fg": "#333333", "borderwidth": 3, "highlightthickness": 0}
-run_button = tk.Button(root, text="Execute MQTT application", command=run_bash_script, **button_style)
+run_button = tk.Button(root, text="Execute application", command=run_bash_script, **button_style)
 run_button.grid(row=1, column=1, columnspan=2, padx=20, pady=20)
 
 # Icon styling
