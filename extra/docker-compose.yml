@@ -18,7 +18,7 @@ services:
     depends_on:
       - db
     environment:
-      URL: {{URL}}
+      URL: {{URL_PR}}
       USER_ID: {{USER_ID}}
       DB: "db:3306"
 
