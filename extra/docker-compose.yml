@@ -1,0 +1,26 @@
+# User VPC API Docker Compose template
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpw
+      MYSQL_DATABASE: user
+    volumes:
+      - db_data:/var/lib/mysql
+
+  app:
+    build: .
+    image: mariorgl/homecloud-user-api:latest
+    ports:
+      - 443:443
+    depends_on:
+      - db
+    environment:
+      URL: {{URL}}
+      USER_ID: {{USER_ID}}
+      DB: "db:3306"
+
+volumes:
+  db_data:
