@@ -75,7 +75,7 @@ check_existing() {
 
 clone_repo() {
     echo -e "${CYAN}Installing required application files...${NC}"
-    if git clone https://github.com/mario26rgl/homecloud-iot ./application &> /dev/null; then
+    if git clone https://github.com/mario26rgl/homecloud-iot/tree/main/application ./application &> /dev/null; then
         echo -e "${GREEN}Files installed successfully!${NC}"
     else
         echo -e "${RED}Failed to install application files! Please check your internet connection.${NC}"
@@ -91,7 +91,7 @@ create_shortcut() {
 [Desktop Entry]
 Name=HomeCloud
 Comment=This is the HomeCloud application launcher
-Exec=python3 main.py
+Exec=python3 login.py
 Icon=${ICON_PATH}
 Terminal=false
 Type=Application
