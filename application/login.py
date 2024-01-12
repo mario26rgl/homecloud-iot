@@ -7,7 +7,7 @@ def login():
    username_value = username.get()
    password_value = password.get()
    try:
-    response = requests.post("https://iothomecloud.com/client-login", json={"username": username_value, "password": password_value})
+    response = requests.post("https://www.iothomecloud.com/login-client", json={"email": username_value, "password": password_value})
     if response.status_code == 200:
         root.destroy()
         
