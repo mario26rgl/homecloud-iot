@@ -37,6 +37,10 @@ def toggle_password():
 root = tk.Tk()
 root.title("HomeCloud v0.1 - Login")
 
+# Icon styling
+icon = PhotoImage(file="images/icon.png")
+root.iconphoto(True, icon)
+
 
 # Set fixed window size
 root.geometry("465x300")

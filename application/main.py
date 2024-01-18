@@ -41,7 +41,7 @@ def logout():
 root.title("HomeCloud v0.1 - Dashboard")
 
 # Set fixed window size
-root.geometry("810x360")
+root.geometry("820x360")
 root.resizable(False, False)  # Disable window resizing
 
 # Icon styling
