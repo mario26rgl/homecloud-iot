@@ -75,10 +75,11 @@ check_existing() {
 
 clone_repo() {
     echo -e "${CYAN}Installing required application files...${NC}"
+    mkdir application && cd application
     if git clone -n --depth=1 --filter=tree:0 https://github.com/mario26rgl/homecloud-iot/ ./ &> /dev/null; then
         git sparse-checkout set --no-cone application
         git checkout
-        chmox +x ./application/scripts/init.sh
+        chmod +x ./application/scripts/init.sh
         echo -e "${GREEN}Files installed successfully!${NC}"
     else
         echo -e "${RED}Failed to install application files! Please check your internet connection.${NC}"
@@ -90,17 +91,17 @@ create_shortcut() {
     CURRENT_DIR=$(pwd)
     ICON_PATH="${CURRENT_DIR}/application/images/icon.png"
 
-    echo "[Desktop Entry]" > ~/Desktop/HomeCloud.desktop
-    echo "Name=HomeCloud" >> ~/Desktop/HomeCloud.desktop
-    echo "Comment=This is the HomeCloud application launcher" >> ~/Desktop/HomeCloud.desktop
-    echo "Exec=python3 login.py" >> ~/Desktop/HomeCloud.desktop
-    echo "Icon=${ICON_PATH}" >> ~/Desktop/HomeCloud.desktop
-    echo "Terminal=false" >> ~/Desktop/HomeCloud.desktop
-    echo "Type=Application" >> ~/Desktop/HomeCloud.desktop
-    echo "Categories=Utility;" >> ~/Desktop/HomeCloud.desktop
-    echo "Path=${CURRENT_DIR}/application" >> ~/Desktop/HomeCloud.desktop
+    echo "[Desktop Entry]" > /home/pi/Desktop/HomeCloud.desktop
+    echo "Name=HomeCloud" >> /home/pi/Desktop/HomeCloud.desktop
+    echo "Comment=This is the HomeCloud application launcher" >> /home/pi/Desktop/HomeCloud.desktop
+    echo "Exec=python3 login.py" >> /home/pi/Desktop/HomeCloud.desktop
+    echo "Icon=${ICON_PATH}" >> /home/pi/Desktop/HomeCloud.desktop
+    echo "Terminal=false" >> /home/pi/Desktop/HomeCloud.desktop
+    echo "Type=Application" >> /home/pi/Desktop/HomeCloud.desktop
+    echo "Categories=Utility;" >> /home/pi/Desktop/HomeCloud.desktop
+    echo "Path=${CURRENT_DIR}/application" >> /home/pi/Desktop/HomeCloud.desktop
 
-    chmod +x ~/Desktop/HomeCloud.desktop
+    chmod +x /home/pi/Desktop/HomeCloud.desktop
 }
 
 print_header

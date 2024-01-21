@@ -11,8 +11,9 @@ def run_bash_script():
     def execute_script():
         try:
             global url, user_id
+            command = f'sudo bash -c "./scripts/init.sh \\"{url}\\" {user_id}"'
             process = subprocess.Popen(
-                ["./scripts/init.sh", url, user_id],
+                command,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
                 text=True,
