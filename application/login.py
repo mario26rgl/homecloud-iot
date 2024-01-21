@@ -44,7 +44,7 @@ root.title("HomeCloud v0.1 - Login")
 
 
 # Set fixed window size
-root.geometry("465x300")
+root.geometry("520x300")
 root.resizable(False, False)  # Disable window resizing
 
 # Custom title label simulating a larger header

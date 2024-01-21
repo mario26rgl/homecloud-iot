@@ -28,7 +28,7 @@ def run_bash_script():
             terminal_output.insert(tk.END, f"Error: {e.output}\n")
 
     # Run the script in a separate thread to prevent freezing the GUI
-    thread = threading.Thread(target=execute_script())
+    thread = threading.Thread(target=execute_script)
     thread.start()
 
 def logout():
@@ -39,7 +39,7 @@ def logout():
 root.title("HomeCloud v0.1 - Dashboard")
 
 # Set fixed window size
-root.geometry("820x360")
+root.geometry("890x360")
 root.resizable(False, False)  # Disable window resizing
 
 # Icon styling

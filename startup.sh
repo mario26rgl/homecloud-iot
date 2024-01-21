@@ -78,6 +78,7 @@ clone_repo() {
     if git clone -n --depth=1 --filter=tree:0 https://github.com/mario26rgl/homecloud-iot/ ./ &> /dev/null; then
         git sparse-checkout set --no-cone application
         git checkout
+        chmox +x ./application/scripts/init.sh
         echo -e "${GREEN}Files installed successfully!${NC}"
     else
         echo -e "${RED}Failed to install application files! Please check your internet connection.${NC}"
@@ -89,17 +90,15 @@ create_shortcut() {
     CURRENT_DIR=$(pwd)
     ICON_PATH="${CURRENT_DIR}/application/images/icon.png"
 
-    cat <<EOF > ~/Desktop/HomeCloud.desktop
-[Desktop Entry]
-Name=HomeCloud
-Comment=This is the HomeCloud application launcher
-Exec=python3 login.py
-Icon=${ICON_PATH}
-Terminal=false
-Type=Application
-Categories=Utility;
-Path=${CURRENT_DIR}/application
-EOF
+    echo "[Desktop Entry]" > ~/Desktop/HomeCloud.desktop
+    echo "Name=HomeCloud" >> ~/Desktop/HomeCloud.desktop
+    echo "Comment=This is the HomeCloud application launcher" >> ~/Desktop/HomeCloud.desktop
+    echo "Exec=python3 login.py" >> ~/Desktop/HomeCloud.desktop
+    echo "Icon=${ICON_PATH}" >> ~/Desktop/HomeCloud.desktop
+    echo "Terminal=false" >> ~/Desktop/HomeCloud.desktop
+    echo "Type=Application" >> ~/Desktop/HomeCloud.desktop
+    echo "Categories=Utility;" >> ~/Desktop/HomeCloud.desktop
+    echo "Path=${CURRENT_DIR}/application" >> ~/Desktop/HomeCloud.desktop
 
     chmod +x ~/Desktop/HomeCloud.desktop
 }

@@ -9,7 +9,7 @@ git pull origin main --force
 # Check to see if root CA file exists, download if not
 if [ ! -f ./certs/root-CA.crt ]; then
   printf "\nDownloading AWS IoT Root CA certificate from AWS...\n"
-  curl https://www.amazontrust.com/repository/AmazonRootCA1.pem > ./root-CA.crt
+  curl https://www.amazontrust.com/repository/AmazonRootCA1.pem > ./awsCA.pem
 fi
 
 # Create a Python virtual environment
