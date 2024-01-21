@@ -75,7 +75,7 @@ def parse_sensor_data(data):
     try:
         data_list = data.split(',')
         temp = float(data_list[0].split(':')[1])
-        humidity = float(data_list[1].split(':')[1])
+        humidity = int(data_list[1].split(':')[1])
         brightness = int(data_list[2].split(':')[1])
         return temp, humidity, brightness
     except Exception as e:
