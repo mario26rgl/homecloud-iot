@@ -55,12 +55,6 @@ def MQTT_callback(client, topic, message):
     print(f"\t - topic: {BROWN}{MQTT_TOPIC}{NC}")
     print(f"\t - content: {BLUE}{message}{NC}")
 
-    # if MQTT_parse(message):
-    #     CLIENT_STATUS = True
-    #     print(f"\n{BLUE}[ACK]{NC} Message in {GREEN}correct{NC} format. Added to database.\n")
-    # else:
-    #     print(f"\n{BLUE}[ACK]{NC} Message in {RED}incorrect{NC} format. Skipping database operations.\n")
-
 def MQTT_publish(client, message):
 
     '''

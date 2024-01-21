@@ -34,8 +34,6 @@ def run_bash_script():
 def logout():
     # Revert to login screen
     root.destroy()
-    import login
-    login.run()
 
 # Set GUI title
 root.title("HomeCloud v0.1 - Dashboard")
@@ -45,8 +43,8 @@ root.geometry("820x360")
 root.resizable(False, False)  # Disable window resizing
 
 # Icon styling
-icon = PhotoImage(file="images/icon.png")
-root.iconphoto(True, icon)
+# icon = PhotoImage(file="images/icon.png")
+# root.iconphoto(True, icon)
 
 # Custom title label simulating a larger header
 custom_font = ("Bahnschrift", 18)
@@ -106,5 +104,5 @@ def run(param_url, user_name, param_id):
     root.mainloop()
 
 if __name__ == '__main__':
-   run("","Mario","")
+   print("Please log in first!")
 

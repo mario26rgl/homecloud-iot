@@ -75,7 +75,9 @@ check_existing() {
 
 clone_repo() {
     echo -e "${CYAN}Installing required application files...${NC}"
-    if git clone https://github.com/mario26rgl/homecloud-iot/tree/main/application ./application &> /dev/null; then
+    if git clone -n --depth=1 --filter=tree:0 https://github.com/mario26rgl/homecloud-iot/ ./ &> /dev/null; then
+        git sparse-checkout set --no-cone application
+        git checkout
         echo -e "${GREEN}Files installed successfully!${NC}"
     else
         echo -e "${RED}Failed to install application files! Please check your internet connection.${NC}"
