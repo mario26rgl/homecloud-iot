@@ -72,11 +72,15 @@ def parse_sensor_data(data):
     '''
     Parse data received from the Arduino (UNO)
     '''
-    data_list = data.split(',')
-    temp = float(data_list[0].split(':')[1])
-    humidity = float(data_list[1].split(':')[1])
-    brightness = int(data_list[2].split(':')[1])
-    return temp, humidity, brightness
+    try:
+        data_list = data.split(',')
+        temp = float(data_list[0].split(':')[1])
+        humidity = float(data_list[1].split(':')[1])
+        brightness = int(data_list[2].split(':')[1])
+        return temp, humidity, brightness
+    except Exception as e:
+        print(f"[ERR] Invalid sensor data: {data}")
+        return None, None, None
 
 if __name__ == '__main__':
 
@@ -129,8 +133,11 @@ if __name__ == '__main__':
                     raw_data = ser.readline().decode().strip()
                     print(f"[ACK] RAW Arduino (UNO) data received: /n{raw_data}/n")
                     temperature, humidity, bright = parse_sensor_data(raw_data)
-                    processed_data = f"temperature: {temperature}, humidity: {humidity}, brightness: {bright}"
-                    MQTT_publish(mqtt_client, processed_data)
+                    if temperature is None or humidity is None or bright is  None:
+                        print(f"[ERR] Invalid data received from Arduino (UNO)")
+                    else:
+                        processed_data = f"temperature: {temperature}, humidity: {humidity}, brightness: {bright}"
+                        MQTT_publish(mqtt_client, processed_data) 
                 time.sleep(1)
         except KeyboardInterrupt:
             ser.close()
